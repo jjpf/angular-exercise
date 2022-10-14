@@ -21,7 +21,9 @@ export class AppEffects {
               // Retrieve all accounts
               let currentAccounts: IAccount[];
               const test = this.accountsService.getAll();
-              test.subscribe((accounts) => (currentAccounts = accounts));
+              test.subscribe(
+                (accounts: IAccount[]) => (currentAccounts = accounts)
+              );
 
               // Set app account counter
               apps.forEach((app: IApp) => {
@@ -32,7 +34,7 @@ export class AppEffects {
 
               return AppActions.loadAppListSuccess({ results: apps });
             }),
-            catchError((error) => {
+            catchError((error: any) => {
               return of(AppActions.loadAppListFailure({ error }));
             })
           );
