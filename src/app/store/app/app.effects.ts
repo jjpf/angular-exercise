@@ -20,8 +20,8 @@ export class AppEffects {
             map((apps: IApp[]) => {
               // Retrieve all accounts
               let currentAccounts: IAccount[];
-              const test = this.accountsService.getAll();
-              test.subscribe(
+              const allAccounts = this.accountsService.getAll();
+              allAccounts.subscribe(
                 (accounts: IAccount[]) => (currentAccounts = accounts)
               );
 
